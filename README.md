@@ -7,6 +7,14 @@ notification permission, background service, or third-party native SDK is requir
 Inspired by [expo-dynamic-notifications](https://github.com/rit3zh/expo-dynamic-notifications).
 This is an independent native implementation, not a React Native wrapper.
 
+## Demo
+
+<a href="https://www.youtube.com/watch?v=UzB9ygfaPSI">
+  <img src="https://img.youtube.com/vi/UzB9ygfaPSI/hqdefault.jpg" alt="Watch the Dynamic Notifications demo on YouTube" width="392" />
+</a>
+
+[Watch the demo on YouTube](https://www.youtube.com/watch?v=UzB9ygfaPSI).
+
 ## Install in your app
 
 Run Composer in the **consuming application**, never inside this plugin:
