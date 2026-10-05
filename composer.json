@@ -1,0 +1,18 @@
+{
+    "name": "nativephp/mobile-dynamic-notifications",
+    "description": "Fluid Dynamic Island-style in-app notifications for NativePHP on iOS",
+    "type": "nativephp-plugin",
+    "license": "MIT",
+    "homepage": "https://github.com/NativePHP/mobile-dynamic-notifications",
+    "support": {
+        "issues": "https://github.com/NativePHP/mobile-dynamic-notifications/issues",
+        "source": "https://github.com/NativePHP/mobile-dynamic-notifications"
+    },
+    "require": {"php": "^8.3", "nativephp/mobile": "^4.5.0"},
+    "scripts": {"test": ["@php tests/bridge.php", "@php tests/off-device.php"]},
+    "autoload": {"psr-4": {"NativePHP\\DynamicNotifications\\": "src/"}},
+    "extra": {
+        "laravel": {"providers": ["NativePHP\\DynamicNotifications\\DynamicNotificationsServiceProvider"]},
+        "nativephp": {"manifest": "nativephp.json"}
+    }
+}

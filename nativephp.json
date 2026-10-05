@@ -1,0 +1,13 @@
+{
+    "namespace": "DynamicNotifications",
+    "platforms": ["ios"],
+    "bridge_functions": [
+        {"name": "DynamicNotifications.Show", "ios": "DynamicNotificationFunctions.Show", "description": "Show or replace the foreground notification"},
+        {"name": "DynamicNotifications.Dismiss", "ios": "DynamicNotificationFunctions.Dismiss", "description": "Dismiss the current notification, optionally matching its ID"}
+    ],
+    "ios": {"min_version": "18.2", "info_plist": {}, "dependencies": {"swift_packages": [], "pods": []}},
+    "events": [
+        "NativePHP\\DynamicNotifications\\Events\\NotificationTapped",
+        "NativePHP\\DynamicNotifications\\Events\\NotificationDismissed"
+    ]
+}

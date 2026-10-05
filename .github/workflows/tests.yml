@@ -1,0 +1,20 @@
+name: PHP bridge checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check PHP syntax
+        run: find src tests -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: Verify bridge contracts
+        run: |
+          php tests/bridge.php
+          php tests/off-device.php
