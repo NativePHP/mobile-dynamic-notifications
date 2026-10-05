@@ -20,18 +20,13 @@ This is an independent native implementation, not a React Native wrapper.
 Run Composer in the **consuming application**, never inside this plugin:
 
 ```sh
-composer config repositories.dynamic-notifications vcs https://github.com/NativePHP/mobile-dynamic-notifications
-composer require nativephp/mobile-dynamic-notifications:dev-main
+composer require nativephp/mobile-dynamic-notifications
 php artisan native:plugin:register nativephp/mobile-dynamic-notifications
 ```
 
 Requires NativePHP Mobile 4.5.0+ and iOS 18.2+. Rebuild your iOS app to compile
 the Swift code. The initial implementation is iOS-only; no Android renderer ships
-in this package yet. No Packagist listing or tagged release is required for the
-VCS installation above.
-
-For local development, use a Composer `path` repository pointing to your clone
-instead of the `vcs` repository.
+in this package yet.
 
 ## Show and dismiss
 
