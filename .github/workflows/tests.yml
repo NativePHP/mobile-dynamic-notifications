@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # The native event checks in tests/bridge.php load DispatchableFromNative from nativephp/mobile.
+      - name: Install dependencies
+        run: composer update --no-interaction --prefer-dist --no-progress
       - name: Check PHP syntax
         run: find src tests -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Verify bridge contracts
