@@ -24,7 +24,7 @@ composer require nativephp/mobile-dynamic-notifications
 php artisan native:plugin:register nativephp/mobile-dynamic-notifications
 ```
 
-Requires NativePHP Mobile 4.5.0+ and iOS 18.2+. Rebuild your iOS app to compile
+Requires NativePHP Mobile 4.6.1+ and iOS 18.2+. Rebuild your iOS app to compile
 the Swift code. The initial implementation is iOS-only; no Android renderer ships
 in this package yet.
 

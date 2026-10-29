@@ -1,9 +1,13 @@
 <?php
 
-// Dependency-free bridge contract checks. Run: php tests/bridge.php
+// Bridge contract checks. Run: php tests/bridge.php
+// Only the event checks at the end need `composer install`; everything else is dependency-free.
 require __DIR__.'/../src/DynamicNotifications.php';
 
+use Native\Mobile\Events\Contracts\DispatchableFromNative;
 use NativePHP\DynamicNotifications\DynamicNotifications;
+use NativePHP\DynamicNotifications\Events\NotificationDismissed;
+use NativePHP\DynamicNotifications\Events\NotificationTapped;
 
 $calls = [];
 $response = '{"success":true}';
@@ -62,4 +66,19 @@ $response = 'null';
 fails(fn () => $notifications->show('Title'), RuntimeException::class);
 $response = '{';
 fails(fn () => $notifications->show('Title'), JsonException::class);
-echo "PASS: bridge payloads, IDs, duration, validation, dismissals, and error handling\n";
+
+// DynamicNotificationFunctions.swift sends both events through /_native/api/events, which
+// nativephp/mobile 4.6.1+ refuses unless the class implements DispatchableFromNative.
+// Laravel's event traits come from the host app, so stand-ins are enough to load the classes.
+require __DIR__.'/../vendor/autoload.php';
+trait LaravelEventTraitStandIn {}
+foreach (['Illuminate\\Foundation\\Events\\Dispatchable', 'Illuminate\\Queue\\SerializesModels'] as $trait) {
+    if (! trait_exists($trait)) {
+        class_alias(LaravelEventTraitStandIn::class, $trait);
+    }
+}
+foreach ([NotificationTapped::class, NotificationDismissed::class] as $event) {
+    check(class_exists($event), $event.' is missing');
+    check(is_subclass_of($event, DispatchableFromNative::class), $event.' must implement DispatchableFromNative');
+}
+echo "PASS: bridge payloads, IDs, duration, validation, dismissals, error handling, and native events\n";

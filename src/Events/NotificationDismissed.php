@@ -4,8 +4,9 @@ namespace NativePHP\DynamicNotifications\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Native\Mobile\Events\Contracts\DispatchableFromNative;
 
-class NotificationDismissed
+class NotificationDismissed implements DispatchableFromNative
 {
     use Dispatchable, SerializesModels;
 
