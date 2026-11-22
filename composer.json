@@ -8,7 +8,7 @@
         "issues": "https://github.com/NativePHP/mobile-dynamic-notifications/issues",
         "source": "https://github.com/NativePHP/mobile-dynamic-notifications"
     },
-    "require": {"php": "^8.3", "nativephp/mobile": "^4.5.0"},
+    "require": {"php": "^8.3", "nativephp/mobile": "^4.6.1"},
     "scripts": {"test": ["@php tests/bridge.php", "@php tests/off-device.php"]},
     "autoload": {"psr-4": {"NativePHP\\DynamicNotifications\\": "src/"}},
     "extra": {
